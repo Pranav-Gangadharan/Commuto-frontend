@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { SlSocialStumbleupon } from 'react-icons/sl';
 import { TextInput, Loading, CustomButton } from '../components';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { BgImg } from '../assets';
 import { apiRequest } from '../utils';
@@ -11,6 +11,7 @@ const Register = () => {
 	const [errMsg, setErrMsg] = useState('');
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	const {
 		register,
@@ -30,7 +31,7 @@ const Register = () => {
 
 			setErrMsg(res);
 			setTimeout(() => {
-				window.location.replace('/login');
+				navigate('/login');
 			}, 3000);
 
 			setIsSubmitting(false);
