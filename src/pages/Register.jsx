@@ -29,11 +29,15 @@ const Register = () => {
 				method: 'POST',
 			});
 
-			setErrMsg(res);
-			setTimeout(() => {
+			if (res.status >= 200 && res.status < 300) {
+				setErrMsg(res);
 				navigate('/login');
-			}, 3000);
+			} else {
+				console.error('Error:', res.status, res.statusText);
+			}
 
+			setErrMsg(res);
+			navigate('/login');
 			setIsSubmitting(false);
 		} catch (error) {
 			console.log(error);
