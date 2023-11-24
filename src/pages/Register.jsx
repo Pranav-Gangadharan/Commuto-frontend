@@ -28,14 +28,11 @@ const Register = () => {
 				method: 'POST',
 			});
 
-			if (res?.status === 204) {
-				setErrMsg(res);
-				setTimeout(() => {
-					window.location.replace('/login');
-				}, 3000);
-			} else {
-				setErrMsg(res);
-			}
+			setErrMsg(res);
+			setTimeout(() => {
+				window.location.replace('/login');
+			}, 3000);
+
 			setIsSubmitting(false);
 		} catch (error) {
 			console.log(error);
