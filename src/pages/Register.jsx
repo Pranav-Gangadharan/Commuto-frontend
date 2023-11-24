@@ -28,13 +28,13 @@ const Register = () => {
 				method: 'POST',
 			});
 
-			if (res?.status === 'failed') {
-				setErrMsg(res);
-			} else {
+			if (res?.status === 200) {
 				setErrMsg(res);
 				setTimeout(() => {
 					window.location.replace('/login');
-				}, 5000);
+				}, 3000);
+			} else {
+				setErrMsg(res);
 			}
 			setIsSubmitting(false);
 		} catch (error) {
@@ -140,7 +140,9 @@ const Register = () => {
 						{errMsg?.message && (
 							<span
 								className={`text-sm ${
-									errMsg?.status == 'failed' ? 'text-red' : 'text-green'
+									errMsg?.status == 'failed'
+										? 'text-[#ff2222f6]'
+										: 'text-[#1b9e19f6]'
 								} mt-0.5`}
 							>
 								{errMsg?.message}
