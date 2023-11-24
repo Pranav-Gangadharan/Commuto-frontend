@@ -28,7 +28,7 @@ const Register = () => {
 				method: 'POST',
 			});
 
-			if (res?.status === 200) {
+			if (res?.status === 204) {
 				setErrMsg(res);
 				setTimeout(() => {
 					window.location.replace('/login');
