@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { SlSocialStumbleupon } from 'react-icons/sl';
 import { TextInput, Loading, CustomButton } from '../components';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { BgImg } from '../assets';
 import { apiRequest } from '../utils';
@@ -11,7 +11,6 @@ const Register = () => {
 	const [errMsg, setErrMsg] = useState('');
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const dispatch = useDispatch();
-	const navigate = useNavigate();
 
 	const {
 		register,
@@ -29,9 +28,9 @@ const Register = () => {
 				method: 'POST',
 			});
 
-			if (res.status === 201)  {
+			if (res.status === 201) {
 				setErrMsg(res);
-				navigate('/login');
+				window.location.replace('/login');
 			} else {
 				console.error('Error:', res.status, res.statusText);
 			}
