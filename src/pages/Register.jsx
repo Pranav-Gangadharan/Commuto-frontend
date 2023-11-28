@@ -28,12 +28,11 @@ const Register = () => {
 				method: 'POST',
 			});
 
-			if (res.status === 201) {
+			if (res?.status === 201) {
 				setErrMsg(res);
 				window.location.replace('/login');
 			} else {
 				setErrMsg(res);
-				console.error('Error:', res.status, res.statusText);
 			}
 			setIsSubmitting(false);
 		} catch (error) {
