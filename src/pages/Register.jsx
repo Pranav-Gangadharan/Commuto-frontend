@@ -29,15 +29,12 @@ const Register = () => {
 				method: 'POST',
 			});
 
-			if (res.status >= 200 && res.status < 300) {
+			if (res.status === 201)  {
 				setErrMsg(res);
 				navigate('/login');
 			} else {
 				console.error('Error:', res.status, res.statusText);
 			}
-
-			setErrMsg(res);
-			navigate('/login');
 			setIsSubmitting(false);
 		} catch (error) {
 			console.log(error);
