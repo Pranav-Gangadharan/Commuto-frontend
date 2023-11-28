@@ -32,6 +32,7 @@ const Register = () => {
 				setErrMsg(res);
 				window.location.replace('/login');
 			} else {
+				setErrMsg(res);
 				console.error('Error:', res.status, res.statusText);
 			}
 			setIsSubmitting(false);
